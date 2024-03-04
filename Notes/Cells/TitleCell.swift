@@ -15,12 +15,12 @@ struct TitleCell: View {
         HStack{
             
             Text(note.titile)
-                .padding()
+                .padding(.vertical,8)
                 .bold()
             
             Spacer(minLength: 16)
             
-            Text(note.date).padding()
+            Text(note.date)
             
         }
             
