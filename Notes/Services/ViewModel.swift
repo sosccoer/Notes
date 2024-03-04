@@ -9,19 +9,22 @@ import Foundation
 
 class ViewModel: ObservableObject{
     
-    
-    
     @Published var notes: [NoteModel] = []
     
+    func createNewNote() {
+        getNotes()
+        let zeroModel = NoteModel(titile: "", mainText: "", date: "")
+        self.notes.append(zeroModel)
+    }
+    
     func getNotes() {
-        
-        self.notes = [
-        NoteModel(titile: "Моя первая заметка", mainText: "ну тут хуета какая-то", date: "12:02:2002")
-        ]
         
     }
     
     func addNewNote(note: NoteModel){
+        
+        self.notes.append(note)
+        
         // realm addNew File note
         //getNotes()
     }
