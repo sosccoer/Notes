@@ -10,11 +10,10 @@ import SwiftUI
 struct NoteView: View {
     @State var indexOfNote: Int?
     @State var viewModel: ViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var title: String = ""
     @State private var text: String = ""
-    
-    // chevron.left
     
     var body: some View {
         
@@ -29,7 +28,21 @@ struct NoteView: View {
                     Spacer()
                     
                 }.padding(.horizontal,16)
+            }
+        }
+        .toolbar{
+            ToolbarItem(placement: .navigationBarTrailing){
+                Button(action: {
                     
+                    if let index = indexOfNote {
+                        viewModel.deleteNote(note: viewModel.notes[index])
+                    }
+                    
+                    presentationMode.wrappedValue.dismiss()
+                    
+                }){
+                    Image(systemName: "trash")
+                }
             }
         }
         .onAppear{
@@ -50,14 +63,13 @@ struct NoteView: View {
                     
                     let note = NoteModel(titile: self.title, mainText: self.text, date: formattedDate)
                     viewModel.addNewNote(note: note)
-                default: 
+                default:
                     let currentNote = viewModel.notes[indexOfNote!]
                     let note = NoteModel(id: currentNote.id , titile: title, mainText: text, date: currentNote.date)
-                  
+                    
                     viewModel.updateNote(note: note)
                 }
             }
         }
-        
     }
 }

@@ -17,11 +17,8 @@ class ViewModel: ObservableObject{
     }
     
     func addNewNote(note: NoteModel){
-        
         self.notes.append(note)
-        
         realm.add(notes: self.notes)
-      
     }
     
     func updateNote(note: NoteModel) {
@@ -32,6 +29,10 @@ class ViewModel: ObservableObject{
     func deleteAll() {
         realm.deleteAllNotes()
         getNotes()
+    }
+    
+    func deleteNote(note: NoteModel){
+        realm.deleteOne(note: note)
     }
     
 }

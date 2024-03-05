@@ -8,22 +8,15 @@
 import SwiftUI
 
 struct TitleCell: View {
-    
     @State var note: NoteModel
-    
     var body: some View {
         HStack{
-            
             Text(note.titile)
                 .padding(.vertical,8)
                 .bold()
-            
             Spacer(minLength: 16)
-            
             Text(note.date)
-            
         }
-            
     }
 }
 

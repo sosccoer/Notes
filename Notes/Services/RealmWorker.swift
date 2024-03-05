@@ -43,30 +43,46 @@ class RealmWorker: ObservableObject {
     }
     
     func updateNote(note: NoteModel) {
-         
-            let realmNotes = realm.objects(NoteRealm.self)
-            
-            for (index, realmNote) in realmNotes.enumerated()  {
-                if realmNote.id == note.id{
-                    try! realm.write{
-                        realmNotes[index].mainText = note.mainText
-                        realmNotes[index].title = note.titile
-                    }
+        
+        let realmNotes = realm.objects(NoteRealm.self)
+        
+        for (index, realmNote) in realmNotes.enumerated()  {
+            if realmNote.id == note.id{
+                try! realm.write{
+                    realmNotes[index].mainText = note.mainText
+                    realmNotes[index].title = note.titile
                 }
             }
-            
+        }
     }
     
     func deleteAllNotes() {
         do {
-                   try realm.write {
-                       realm.delete(realm.objects(NoteRealm.self))
-                   }
-               } catch {
-                   print("Error deleting all notes: \(error)")
-               }
+            try realm.write {
+                realm.delete(realm.objects(NoteRealm.self))
+            }
+        } catch {
+            print("Error deleting all notes: \(error)")
+        }
     }
     
+    func deleteOne(note:NoteModel){
+        
+        let realmNotes = realm.objects(NoteRealm.self)
+        
+        for (index, realmNote) in realmNotes.enumerated()  {
+            
+            if realmNote.id == note.id{
+                try! realm.write{
+                    
+                    realm.delete(realmNotes[index])
+                    
+                }
+            }
+            
+        }
+        
+    }
     
     
 }
