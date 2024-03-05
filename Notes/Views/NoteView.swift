@@ -19,17 +19,18 @@ struct NoteView: View {
     var body: some View {
         
         VStack {
-            
-            VStack {
+            ScrollView(showsIndicators: false){
                 
-                CustomTextEditor(text: $title, placeHolder: " Название заметки")
-                Divider().background(.black).frame(height: 2)
-                CustomTextEditor(text: $text, placeHolder: " Основной текст")
-                
-                Spacer()
-                
-            }.padding(.horizontal,16)
-            
+                VStack {
+                    
+                    CustomTextEditor(text: $title, placeHolder: " Название заметки", minLengh: 40).bold()
+                    Divider().background(.black).frame(height: 2)
+                    CustomTextEditor(text: $text, placeHolder: " Основной текст", minLengh: 650)
+                    Spacer()
+                    
+                }.padding(.horizontal,16)
+                    
+            }
         }
         .onAppear{
             switch indexOfNote {

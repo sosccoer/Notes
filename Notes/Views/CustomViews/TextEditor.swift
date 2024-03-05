@@ -11,20 +11,24 @@ import SwiftUI
 struct CustomTextEditor: View {
     @Binding var text: String
     @State var placeHolder: String
+    @State var minLengh: CGFloat
     var body: some View {
         ZStack{
-            HStack{
-                if text.isEmpty {
-                    Text(placeHolder)
-                        .foregroundColor(.black)
-                        .padding(.leading,8)
-                    Spacer()
+            VStack{
+                HStack{
+                    if text.isEmpty {
+                        Text(placeHolder)
+                            .foregroundColor(.black)
+                            .padding(.leading,8)
+                            .padding(.top,8)
+                        Spacer()
+                    }
                 }
+                Spacer()
             }
             TextEditor( text: $text)
-                .frame(minHeight: 40)
+                .frame(minHeight: minLengh)
                 .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                .border(.red)
                 .opacity(0.8)
         }
     }
