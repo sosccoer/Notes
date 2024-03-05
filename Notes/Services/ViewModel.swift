@@ -9,24 +9,29 @@ import Foundation
 
 class ViewModel: ObservableObject{
     
+    let realm = RealmWorker()
     @Published var notes: [NoteModel] = []
     
-    func createNewNote() {
-        getNotes()
-        let zeroModel = NoteModel(titile: "", mainText: "", date: "")
-        self.notes.append(zeroModel)
-    }
-    
     func getNotes() {
-        
+        self.notes = realm.getAllNotes()
     }
     
     func addNewNote(note: NoteModel){
         
         self.notes.append(note)
         
-        // realm addNew File note
-        //getNotes()
+        realm.add(notes: self.notes)
+      
+    }
+    
+    func updateNote(note: NoteModel) {
+        realm.updateNote(note: note)
+        getNotes()
+    }
+    
+    func deleteAll() {
+        realm.deleteAllNotes()
+        getNotes()
     }
     
 }

@@ -50,8 +50,11 @@ struct NoteView: View {
                     
                     let note = NoteModel(titile: self.title, mainText: self.text, date: formattedDate)
                     viewModel.addNewNote(note: note)
-                default: viewModel.notes[indexOfNote!].titile = self.title
-                    viewModel.notes[indexOfNote!].mainText = self.text
+                default: 
+                    let currentNote = viewModel.notes[indexOfNote!]
+                    let note = NoteModel(id: currentNote.id , titile: title, mainText: text, date: currentNote.date)
+                  
+                    viewModel.updateNote(note: note)
                 }
             }
         }

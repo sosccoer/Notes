@@ -53,6 +53,7 @@ struct MainScreen: View {
         }.accentColor(.black)
             .onAppear{
                 viewModel.getNotes()
+                
             }
     }
 }
