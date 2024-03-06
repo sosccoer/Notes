@@ -44,7 +44,7 @@ struct MainScreen: View {
                             Image(systemName: "square.and.pencil")
                                 .resizable()
                                 .frame(width: 30,height: 30)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color(UIColor(named: "ToolBarSet")!))
                         }.padding(.trailing,16)
                         
                     }
