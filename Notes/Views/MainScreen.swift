@@ -50,7 +50,7 @@ struct MainScreen: View {
                     }
                 }
             }
-        }/*.accentColor(Color(UIColor(named: "TextColor")!))*/
+        }.accentColor(Color(UIColor(named: "ToolBarSet")!))
             .onAppear{
                 viewModel.getNotes()
                 
