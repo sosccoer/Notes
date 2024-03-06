@@ -79,11 +79,7 @@ class RealmWorker: ObservableObject {
                     
                 }
             }
-            
         }
-        
     }
-    
-    
 }
 

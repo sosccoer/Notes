@@ -50,7 +50,7 @@ struct MainScreen: View {
                     }
                 }
             }
-        }.accentColor(.black)
+        }/*.accentColor(Color(UIColor(named: "TextColor")!))*/
             .onAppear{
                 viewModel.getNotes()
                 
